@@ -4,6 +4,7 @@ import course.Course;
 import school.School;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Teacher extends Staff {
     private int teacherID;
@@ -30,5 +31,24 @@ public class Teacher extends Staff {
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
+    }
+
+    public String teacherSummary() {
+        return "Teacher{" +
+                "teacherID=" + teacherID +
+                "\n, courses=" + courses +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return teacherID == teacher.teacherID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(teacherID);
     }
 }

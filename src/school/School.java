@@ -2,6 +2,8 @@ package school;
 
 import reference.Address;
 
+import java.util.Objects;
+
 public class School {
     private int schoolID;
     private String schoolName;
@@ -45,5 +47,25 @@ public class School {
 
     public void setDistrict(String district) {
         this.district = district;
+    }
+
+    public String schoolDetails() {
+        return "School{" +
+                "schoolName='" + schoolName + '\'' +
+                ", address=" + address +
+                ", district='" + district + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        School school = (School) o;
+        return schoolID == school.schoolID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(schoolID);
     }
 }

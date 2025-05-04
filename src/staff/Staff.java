@@ -2,6 +2,8 @@ package staff;
 
 import school.School;
 
+import java.util.Objects;
+
 public class Staff {
     private int staffID;
     private String staffName;
@@ -76,5 +78,28 @@ public class Staff {
 
     public void setSchool(School school) {
         this.school = school;
+    }
+
+    public String staffSummary() {
+        return "Staff{" +
+                "staffName='" + staffName + '\'' +
+                ", staffSurname='" + staffSurname + '\'' +
+                ", staffNumber='" + staffNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", school=" + school.getSchoolName() +
+                "\n}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Staff staff = (Staff) o;
+        return staffID == staff.staffID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(staffID);
     }
 }
